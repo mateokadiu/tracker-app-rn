@@ -9,27 +9,30 @@ import MainNavigator from "./source/navigations/MainNavigator";
 import { AuthProvider } from "./source/context/AuthContext";
 import { setNavigator } from "./source/utils/navigationRef";
 import ResolveAuthScreen from "./source/screens/ResolveAuthScreen";
+import { LocationProvider } from "./source/context/LocationContext";
 const Stack = createStackNavigator();
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <AuthProvider>
-        <NavigationContainer
-          ref={(navigator) => {
-            setNavigator(navigator);
-          }}
-        >
-          <Stack.Navigator
-            initialRouteName="ResolveAuth"
-            screenOptions={{ headerShown: false }}
+      <LocationProvider>
+        <AuthProvider>
+          <NavigationContainer
+            ref={(navigator) => {
+              setNavigator(navigator);
+            }}
           >
-            <Stack.Screen name="ResolveAuth" component={ResolveAuthScreen} />
-            <Stack.Screen name="LoginNav" component={LoginNavigator} />
-            <Stack.Screen name="MainNav" component={MainNavigator} />
-          </Stack.Navigator>
-        </NavigationContainer>
-      </AuthProvider>
+            <Stack.Navigator
+              initialRouteName="ResolveAuth"
+              screenOptions={{ headerShown: false }}
+            >
+              <Stack.Screen name="ResolveAuth" component={ResolveAuthScreen} />
+              <Stack.Screen name="LoginNav" component={LoginNavigator} />
+              <Stack.Screen name="MainNav" component={MainNavigator} />
+            </Stack.Navigator>
+          </NavigationContainer>
+        </AuthProvider>
+      </LocationProvider>
     </View>
   );
 }
