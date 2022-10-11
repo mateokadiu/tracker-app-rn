@@ -2,7 +2,13 @@ import createDataContext from "./createDataContext";
 import trackerApi from "../api/tracker";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
-import { ADD_ERROR, CLEAR_ERROR_MESSAGE, SIGNIN, SIGNUP } from "../utils/types";
+import {
+  ADD_ERROR,
+  CLEAR_ERROR_MESSAGE,
+  SIGNIN,
+  SIGNOUT,
+  SIGNUP,
+} from "../utils/types";
 import { navigate } from "../utils/navigationRef";
 
 const authReducer = (state, action) => {
@@ -15,6 +21,8 @@ const authReducer = (state, action) => {
       return { token: action.payload, errorMessage: "" };
     case CLEAR_ERROR_MESSAGE:
       return { ...state, errorMessage: "" };
+    case SIGNOUT:
+      return { token: "", errorMessage: "" };
     default:
       return state;
   }
@@ -56,13 +64,28 @@ const signin =
     }
   };
 
-const signout = (dispatch) => async () => {};
+const tryLocalSignin = (dispatch) => async () => {
+  const token = await AsyncStorage.getItem("token");
+  if (token) {
+    dispatch({ type: SIGNIN, token });
+    navigate("MainNav");
+  } else {
+    navigate("LoginNav");
+  }
+};
+
+const signout = (dispatch) => async () => {
+  await AsyncStorage.removeItem("token");
+  dispatch({ type: SIGNOUT });
+  navigate("LoginNav");
+};
 
 const actions = {
   signin,
   signup,
   signout,
   clearErrorMessage,
+  tryLocalSignin,
 };
 
 const initialState = {

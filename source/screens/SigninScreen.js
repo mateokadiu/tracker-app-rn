@@ -10,10 +10,8 @@ const SigninScreen = () => {
   const isFocused = useIsFocused();
 
   useEffect(() => {
-    console.log(isFocused);
     if (!isFocused) {
       clearErrorMessage();
-      console.log(state);
     }
   }, [isFocused]);
 

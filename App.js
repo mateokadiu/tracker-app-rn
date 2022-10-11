@@ -8,6 +8,7 @@ import LoginNavigator from "./source/navigations/LoginNavigator";
 import MainNavigator from "./source/navigations/MainNavigator";
 import { AuthProvider } from "./source/context/AuthContext";
 import { setNavigator } from "./source/utils/navigationRef";
+import ResolveAuthScreen from "./source/screens/ResolveAuthScreen";
 const Stack = createStackNavigator();
 
 export default function App() {
@@ -20,9 +21,10 @@ export default function App() {
           }}
         >
           <Stack.Navigator
-            initialRouteName="LoginNav"
+            initialRouteName="ResolveAuth"
             screenOptions={{ headerShown: false }}
           >
+            <Stack.Screen name="ResolveAuth" component={ResolveAuthScreen} />
             <Stack.Screen name="LoginNav" component={LoginNavigator} />
             <Stack.Screen name="MainNav" component={MainNavigator} />
           </Stack.Navigator>

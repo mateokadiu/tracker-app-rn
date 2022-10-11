@@ -10,14 +10,14 @@ const Tab = createBottomTabNavigator();
 
 const MainNavigator = () => {
   return (
-    <Tab.Navigator>
-      <Tab.Screen name="TrackCreate" component={TrackCreateScreen} />
-      <Tab.Screen name="Account" component={AccountScreen} />
+    <Tab.Navigator initialRouteName="TrackNav">
       <Tab.Screen
         options={{ headerShown: false }}
         name="TrackNav"
         component={TrackListNavigator}
       />
+      <Tab.Screen name="TrackCreate" component={TrackCreateScreen} />
+      <Tab.Screen name="Account" component={AccountScreen} />
     </Tab.Navigator>
   );
 };

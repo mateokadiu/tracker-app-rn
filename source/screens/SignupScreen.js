@@ -11,6 +11,7 @@ const SignupScreen = ({ navigation }) => {
   const { state, signup, clearErrorMessage } = useContext(AuthContext);
 
   const isFocused = useIsFocused();
+
   useEffect(() => {
     if (!isFocused) {
       clearErrorMessage();
