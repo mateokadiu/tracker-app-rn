@@ -1,11 +1,11 @@
 import React from "react";
-import { View, Text, StyleSheet } from "react-native";
+import { SafeAreaView, Text, StyleSheet } from "react-native";
 
 const TrackCreateScreen = () => {
   return (
-    <View>
+    <SafeAreaView>
       <Text>Track Create Screen</Text>
-    </View>
+    </SafeAreaView>
   );
 };
 
