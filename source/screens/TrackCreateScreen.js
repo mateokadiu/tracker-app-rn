@@ -1,15 +1,14 @@
-import "../mocks/_mockLocation";
-import React from "react";
+import "../mocks/_mockLocation"; // mock location for real device
+import React, { useCallback, useContext } from "react";
 import { SafeAreaView, StyleSheet } from "react-native";
-import { useIsFocused } from "@react-navigation/native";
 import { Text } from "@rneui/themed";
+import { useIsFocused } from "@react-navigation/native";
+
 import Map from "../components/Map";
 import Spacer from "../components/Spacer";
-import { useContext } from "react";
 import { LocationContext } from "../context/LocationContext";
 import useLocation from "../hooks/useLocation";
 import TrackForm from "../components/TrackForm";
-import { useCallback } from "react";
 
 const TrackCreateScreen = () => {
   const {
