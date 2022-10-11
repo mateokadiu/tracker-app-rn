@@ -12,14 +12,14 @@ const MainNavigator = () => {
   return (
     <Tab.Navigator initialRouteName="TrackNav">
       <Tab.Screen
-        options={{ headerShown: false }}
+        options={{ headerShown: false, title: "Tracks" }}
         name="TrackNav"
         component={TrackListNavigator}
       />
       <Tab.Screen
         name="TrackCreate"
         component={TrackCreateScreen}
-        options={{ headerShown: false }}
+        options={{ headerShown: false, title: "Create" }}
       />
       <Tab.Screen
         name="Account"
