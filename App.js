@@ -6,14 +6,19 @@ import { createStackNavigator } from "@react-navigation/stack";
 
 import LoginNavigator from "./source/navigations/LoginNavigator";
 import MainNavigator from "./source/navigations/MainNavigator";
-import { AuthProvider } from "./source/context/AuthProvider";
+import { AuthProvider } from "./source/context/AuthContext";
+import { setNavigator } from "./source/utils/navigationRef";
 const Stack = createStackNavigator();
 
 export default function App() {
   return (
     <View style={styles.container}>
       <AuthProvider>
-        <NavigationContainer>
+        <NavigationContainer
+          ref={(navigator) => {
+            setNavigator(navigator);
+          }}
+        >
           <Stack.Navigator
             initialRouteName="LoginNav"
             screenOptions={{ headerShown: false }}
