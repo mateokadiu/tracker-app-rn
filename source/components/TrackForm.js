@@ -4,13 +4,16 @@ import { Button, Input } from "@rneui/themed/dist";
 import Spacer from "./Spacer";
 import { useContext } from "react";
 import { LocationContext } from "../context/LocationContext";
+import useSaveTrack from "../hooks/useSaveTrack";
 const TrackForm = () => {
   const {
-    state: { name, recording },
+    state: { name, recording, locations },
     startRecording,
     stopRecording,
     changeName,
   } = useContext(LocationContext);
+
+  const [saveTrack] = useSaveTrack();
 
   return (
     <>
@@ -27,6 +30,12 @@ const TrackForm = () => {
         ) : (
           <Button title="Start Recording" onPress={startRecording} />
         )}
+      </Spacer>
+
+      <Spacer>
+        {!recording && locations.length ? (
+          <Button title="Save Recording" onPress={saveTrack} />
+        ) : null}
       </Spacer>
     </>
   );

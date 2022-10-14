@@ -93,10 +93,5 @@ const initialState = {
   errorMessage: "",
 };
 
-const { Provider, Context } = createDataContext(
-  authReducer,
-  actions,
-  initialState
-);
-
-export { Provider as AuthProvider, Context as AuthContext };
+export const { Provider: AuthProvider, Context: AuthContext } =
+  createDataContext(authReducer, actions, initialState);

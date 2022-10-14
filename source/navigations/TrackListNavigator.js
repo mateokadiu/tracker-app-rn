@@ -10,7 +10,7 @@ const TrackListNavigator = () => {
   return (
     <Stack.Navigator
       initialRouteName="TrackList"
-      screenOptions={{ headerShown: false }}
+      screenOptions={{ headerTitle: "Tracks" }}
     >
       <Stack.Screen name="TrackList" component={TrackListScreen} />
       <Stack.Screen name="TrackDetail" component={TrackDetailScreen} />

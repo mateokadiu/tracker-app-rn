@@ -1,5 +1,3 @@
-import { CommonActions } from "@react-navigation/native";
-
 let navigator;
 
 export const setNavigator = (nav) => {

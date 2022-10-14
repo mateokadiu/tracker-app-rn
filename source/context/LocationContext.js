@@ -4,6 +4,7 @@ import {
   STOP_RECORDING,
   ADD_LOCATION,
   CHANGE_NAME,
+  RESET,
 } from "../utils/types";
 import createDataContext from "./createDataContext";
 
@@ -19,6 +20,8 @@ const locationReducer = (state, action) => {
       return { ...state, locations: [...state.locations, action.payload] };
     case CHANGE_NAME:
       return { ...state, name: action.payload };
+    case RESET:
+      return { ...state, name: "", locations: [] };
     default:
       return state;
   }
@@ -43,11 +46,16 @@ const addLocation = (dispatch) => (location, recording) => {
   }
 };
 
+const reset = (dispatch) => () => {
+  dispatch({ type: RESET });
+};
+
 const actions = {
   startRecording,
   stopRecording,
   addLocation,
   changeName,
+  reset,
 };
 
 const initialState = {
@@ -57,10 +65,5 @@ const initialState = {
   name: "",
 };
 
-const { Context, Provider } = createDataContext(
-  locationReducer,
-  actions,
-  initialState
-);
-
-export { Context as LocationContext, Provider as LocationProvider };
+export const { Context: LocationContext, Provider: LocationProvider } =
+  createDataContext(locationReducer, actions, initialState);

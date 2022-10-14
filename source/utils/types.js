@@ -9,7 +9,8 @@ const START_RECORDING = "start_recording";
 const STOP_RECORDING = "stop_recording";
 const ADD_LOCATION = "add_location";
 const CHANGE_NAME = "change_name";
-
+const RESET = "reset";
+const FETCH_TRACKS = "fetch_tacks";
 export {
   ADD_ERROR,
   SIGNUP,
@@ -21,4 +22,6 @@ export {
   STOP_RECORDING,
   ADD_LOCATION,
   CHANGE_NAME,
+  RESET,
+  FETCH_TRACKS,
 };
